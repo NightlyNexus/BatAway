@@ -3,6 +3,8 @@ Bat Away <img alt="Bat Away" src="images/icon.webp" width="30">
 
 Automatically dismiss Brave ad notifications on Android
 
+Get Bat Away on [Google Play](https://play.google.com/store/apps/details?id=com.nightlynexus.bataway) or [download the apk](https://github.com/NightlyNexus/BatAway/releases)
+
 1. Enable five ad notifications per hour on the Brave Android app at `brave://rewards/ads`
 
 2. Enable Bat Away
