@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="crash_report_notifications_channel_name">Crash Reports</string>
+  <string name="crash_report_notification_title">Crash Report</string>
+  <string name="crash_report_shortcut_label_short">Crashes</string>
+  <string name="crash_report_shortcut_label_long">Crash Reports</string>
+</resources>

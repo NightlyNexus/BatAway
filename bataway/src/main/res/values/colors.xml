@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="primary">#FB542B</color>
+  <color name="accent">#F0F0F0</color>
+  <color name="window_background">#343546</color>
+  <color name="text">#F0F0F0</color>
+  <color name="toolbar">@color/primary</color>
+  <color name="toolbar_title">@color/text</color>
+  <color name="ad_notification_background_stroke">@color/text</color>
+  <color name="contribute_background">@color/window_background</color>
+  <color name="contribute_bat_button_tint">#4F30AB</color>
+</resources>

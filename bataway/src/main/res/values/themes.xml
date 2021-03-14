@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="BatAwayTheme" parent="Theme.AppCompat.NoActionBar">
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionModeOverlay">true</item>
+    <item name="android:windowTranslucentStatus">true</item>
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorAccent">@color/accent</item>
+    <item name="android:windowBackground">@color/window_background</item>
+    <item name="android:textColor">@color/text</item>
+    <!--<item name="android:windowBackground">@drawable/window_background</item>
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorAccent">@color/accent</item>-->
+  </style>
+</resources>

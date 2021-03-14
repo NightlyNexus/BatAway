@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Bat Away</string>
+  <string name="toolbar_title">@string/app_name</string>
+  <string name="switch_disabled">Disabled</string>
+  <string name="switch_enabled">Enabled</string>
+  <plurals name="ads_blocked">
+    <item quantity="one">1 ad blocked</item>
+    <item quantity="other">%1$d ads blocked</item>
+  </plurals>
+  <string name="open_ad_notification_content_description">Open ad notification</string>
+  <string name="toolbar_menu_contribute">Contribute</string>
+  <string name="contribute_qr_content_description">BAT address QR code</string>
+  <string name="contribute_bat">If you are feeling generous, you can send me BAT here:\n\n0xEd674B0B9580267c3c89A4C7F6288C8C0d8E0Fb9</string>
+  <string name="contribute_code">If you have ideas for improving the app, check out the source code here:\ngithub.com/NightlyNexus/BatAway</string>
+  <string name="bat_clipboard_label">BAT address</string>
+  <string name="bat_address">0x275790D9520E4E14CC1311D5592C06FA7fB1602D</string>
+  <string name="toast_copied_bat">BAT address copied to clipboard</string>
+  <string name="toast_enable_in_settings">Enable notification access in system settings</string>
+</resources>

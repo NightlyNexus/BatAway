@@ -1,0 +1,23 @@
+CREATE TABLE AdNotification(
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  key TEXT NOT NULL,
+  title TEXT NOT NULL,
+  message TEXT NOT NULL,
+  timestamp INTEGER NOT NULL
+);
+
+insert:
+INSERT INTO AdNotification (key, title, message, timestamp)
+VALUES (?, ?, ?, ?);
+
+count:
+SELECT count(*) FROM AdNotification;
+
+adNotifications:
+SELECT *
+FROM AdNotification
+ORDER BY timestamp DESC
+LIMIT :limit OFFSET :offset;
+
+all:
+SELECT * FROM AdNotification;

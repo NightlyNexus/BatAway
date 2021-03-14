@@ -1,0 +1,2 @@
+include ':bataway'
+rootProject.name = "Bat Away"
