@@ -1,14 +1,13 @@
 package com.nightlynexus.bataway
 
 import android.app.Dialog
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Intent
+import android.content.Intent.ACTION_VIEW
+import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
@@ -144,16 +143,12 @@ class BatAwayActivity : AppCompatActivity() {
   private fun showContributeDialog() {
     Dialog(this).apply {
       setContentView(R.layout.contribute)
-      val copyAddress = OnClickListener {
-        val clipboard = getSystemService(ClipboardManager::class.java)
-        val clip = ClipData.newPlainText(
-          getText(R.string.bat_clipboard_label), getText(R.string.bat_address)
+      window!!.setBackgroundDrawableResource(R.color.contribute_background)
+      findViewById<View>(R.id.contribute_code).setOnClickListener {
+        startActivity(
+          Intent(ACTION_VIEW, Uri.parse("https://github.com/NightlyNexus/BatAway"))
         )
-        clipboard.setPrimaryClip(clip)
-        Toast.makeText(this@BatAwayActivity, R.string.toast_copied_bat, Toast.LENGTH_SHORT).show()
       }
-      findViewById<View>(R.id.contribute_qr).setOnClickListener(copyAddress)
-      findViewById<View>(R.id.contribute_bat).setOnClickListener(copyAddress)
     }.show()
   }
 }

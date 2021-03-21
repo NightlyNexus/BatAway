@@ -7,6 +7,7 @@
   <color name="toolbar">@color/primary</color>
   <color name="toolbar_title">@color/text</color>
   <color name="ad_notification_background_stroke">@color/text</color>
-  <color name="contribute_background">@color/window_background</color>
-  <color name="contribute_bat_button_tint">#4F30AB</color>
+  <color name="contribute_background">#00000000</color>
+  <color name="contribute_button_tint">@color/window_background</color>
+  <color name="contribute_button_ripple">#4F30AB</color>
 </resources>

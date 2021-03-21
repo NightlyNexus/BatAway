@@ -9,8 +9,9 @@
     <item name="colorAccent">@color/accent</item>
     <item name="android:windowBackground">@color/window_background</item>
     <item name="android:textColor">@color/text</item>
-    <!--<item name="android:windowBackground">@drawable/window_background</item>
-    <item name="colorPrimary">@color/primary</item>
-    <item name="colorAccent">@color/accent</item>-->
+  </style>
+
+  <style name="ContributeButton">
+    <item name="colorControlHighlight">@color/contribute_button_ripple</item>
   </style>
 </resources>

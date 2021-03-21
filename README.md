@@ -13,6 +13,11 @@ Get Bat Away on [Google Play](https://play.google.com/store/apps/details?id=com.
 
 <img alt="Enable Brave ads" src="images/enablebraveads.webp" width="400"> <img alt="Enable Bat Away" src="images/enablebataway.webp" width="400">
 
+<br/>
+If you like the app, you can send me BAT here: 0xEd674B0B9580267c3c89A4C7F6288C8C0d8E0Fb9
+
+<img alt="BAT address QR code" src="images/address_qr.webp" width="200">
+
 
 License
 --------
