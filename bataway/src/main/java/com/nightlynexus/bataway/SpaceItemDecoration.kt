@@ -14,6 +14,6 @@ internal class SpaceItemDecoration(@Px private val space: Int) : ItemDecoration(
     parent: RecyclerView,
     state: State
   ) {
-    outRect.set(0, if (parent.getChildLayoutPosition(view) == 0) space else 0, 0, space)
+    outRect.set(0, if (parent.getChildAdapterPosition(view) == 0) space else 0, 0, space)
   }
 }
