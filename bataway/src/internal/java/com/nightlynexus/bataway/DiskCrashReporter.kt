@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.ComponentName
 import android.content.Context.NOTIFICATION_SERVICE
@@ -75,7 +76,12 @@ internal class DiskCrashReporter @Inject constructor(
         }
         if (application.packageManager.hasMatchingActivity(textFileViewer)) {
           notificationBuilder.setContentIntent(
-            PendingIntent.getActivity(application, 0, textFileViewer, FLAG_UPDATE_CURRENT)
+            PendingIntent.getActivity(
+              application,
+              0,
+              textFileViewer,
+              FLAG_IMMUTABLE or FLAG_UPDATE_CURRENT
+            )
           )
 
           val shortcutManager = application.getSystemService(ShortcutManager::class.java)

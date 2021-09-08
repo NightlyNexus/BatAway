@@ -1,54 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
   <com.nightlynexus.bataway.ExtendedToolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="?actionBarSize"
-      android:background="@color/toolbar"
-      app:title="@string/toolbar_title"
-      app:titleTextColor="@color/toolbar_title"
-      />
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:background="@color/toolbar"
+    app:title="@string/toolbar_title"
+    app:titleTextColor="@color/toolbar_title" />
+
   <View
-      android:layout_width="match_parent"
-      android:layout_height="8dp"
-      android:background="@drawable/toolbar_shadow_background"
-      />
+    android:layout_width="match_parent"
+    android:layout_height="8dp"
+    android:background="@drawable/toolbar_shadow_background" />
+
   <TextView
-      android:id="@+id/enable_switch_text"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center_horizontal"
-      android:layout_marginBottom="4dp"
-      android:layout_marginTop="8dp"
-      />
-  <Switch
-      android:id="@+id/enable_switch"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center_horizontal"
-      />
+    android:id="@+id/enable_switch_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="4dp" />
+
+  <androidx.appcompat.widget.SwitchCompat
+    android:id="@+id/enable_switch"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal" />
+
   <TextView
-      android:id="@+id/ads_blocked"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center_horizontal"
-      android:layout_marginTop="16dp"
-      />
+    android:id="@+id/ads_blocked"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="16dp" />
+
   <View
-      android:id="@+id/list_shadow"
-      android:layout_width="match_parent"
-      android:layout_height="4dp"
-      android:layout_marginTop="8dp"
-      android:background="@drawable/ad_notification_list_shadow_background"
-      />
+    android:id="@+id/list_shadow"
+    android:layout_width="match_parent"
+    android:layout_height="4dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/ad_notification_list_shadow_background" />
+
   <com.nightlynexus.bataway.AdNotificationListView
-      android:id="@+id/list"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      />
+    android:id="@+id/list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
 </LinearLayout>

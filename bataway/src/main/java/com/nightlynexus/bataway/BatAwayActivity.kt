@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Switch
+import android.widget.CompoundButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +30,7 @@ class BatAwayActivity : AppCompatActivity() {
   @Inject internal lateinit var adNotificationQueries: AdNotificationQueries
   private lateinit var scope: CoroutineScope
   private lateinit var toolbar: Toolbar
-  private lateinit var switch: Switch
+  private lateinit var switch: CompoundButton
   private lateinit var switchText: TextView
   private lateinit var adsBlocked: TextView
   private lateinit var adsBlockedCount: Query<Long>
