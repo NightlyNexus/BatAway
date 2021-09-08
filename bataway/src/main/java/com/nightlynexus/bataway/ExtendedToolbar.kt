@@ -20,7 +20,7 @@ private class ExtendedToolbar(
     extraHeight = if (SDK_INT >= 30) {
       insets.getInsets(WindowInsets.Type.systemBars()).top
     } else {
-      insets.systemWindowInsetTop
+      @Suppress("Deprecation") insets.systemWindowInsetTop
     }
     return super.onApplyWindowInsets(insets)
   }

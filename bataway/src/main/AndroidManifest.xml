@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nightlynexus.bataway">
+  package="com.nightlynexus.bataway">
 
   <application
-      android:name=".BatAwayApplication"
-      android:allowBackup="true"
-      android:fullBackupContent="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:supportsRtl="true"
-      android:theme="@style/BatAwayTheme">
-    <activity android:name=".BatAwayActivity">
+    android:name=".BatAwayApplication"
+    android:allowBackup="true"
+    android:fullBackupContent="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:supportsRtl="true"
+    android:theme="@style/BatAwayTheme">
+    <activity
+      android:name=".BatAwayActivity"
+      android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
@@ -18,8 +20,9 @@
     </activity>
 
     <service
-        android:name=".BatAwayListenerService"
-        android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+      android:name=".BatAwayListenerService"
+      android:exported="true"
+      android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
       <intent-filter>
         <action android:name="android.service.notification.NotificationListenerService" />
       </intent-filter>

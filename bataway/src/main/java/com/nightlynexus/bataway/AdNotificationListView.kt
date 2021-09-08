@@ -270,9 +270,9 @@ private class AdNotificationAdapter(
     }
   }
 
-  private class ViewHolder(val root: AdNotificationView) : RecyclerView.ViewHolder(root)
+  class ViewHolder(val root: AdNotificationView) : RecyclerView.ViewHolder(root)
 
-  object AdNotificationDiffCallback : DiffUtil.ItemCallback<AdNotificationDisplay>() {
+  private object AdNotificationDiffCallback : DiffUtil.ItemCallback<AdNotificationDisplay>() {
     override fun areItemsTheSame(
       oldItem: AdNotificationDisplay,
       newItem: AdNotificationDisplay
