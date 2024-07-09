@@ -1,8 +1,8 @@
 // Manifest version information!
 def versionMajor = 1
 def versionMinor = 0
-def versionPatch = 0
-def versionBuild = 2
+def versionPatch = 1
+def versionBuild = 0
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.squareup.sqldelight'
@@ -10,13 +10,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
+  namespace 'com.nightlynexus.bataway'
+
   compileSdkVersion versions.compileSdk
 
   defaultConfig {
-    applicationId 'com.nightlynexus.bataway'
+    applicationId namespace
 
     minSdkVersion 26
-    targetSdkVersion 33
+    targetSdkVersion 34
 
     versionCode versionMajor * 1000000 + versionMinor * 10000 + versionPatch * 100 + versionBuild
     versionName "$versionMajor.$versionMinor.$versionPatch"
@@ -27,12 +29,15 @@ android {
     targetCompatibility JavaVersion.VERSION_1_8
   }
 
-  lintOptions {
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+
+  lint {
     abortOnError true
     warningsAsErrors true
     lintConfig rootProject.file('lint.xml')
     textReport true
-    textOutput 'stdout'
     htmlReport true
     htmlOutput rootProject.file("lint-reports/${name}.html")
     // We run a full lint analysis as build part in CI, so skip vital checks for assemble tasks.
@@ -43,7 +48,7 @@ android {
   }
 
   productFlavors {
-    flavorDimensions 'environment'
+    flavorDimensions = ['environment']
 
     internal {
       applicationIdSuffix '.internal'
@@ -70,18 +75,20 @@ dependencies {
   implementation deps.kotlin.stdlibJdk8
   implementation deps.kotlin.coroutines
   implementation deps.kotlin.coroutinesAndroid
-  internalImplementation deps.okio
-  internalImplementation deps.leakcanary
   implementation deps.sqldelight.androidDriver
   implementation deps.sqldelight.androidPagingExtensions
-  implementation deps.paging
-  implementation deps.androidAnnotations
-  implementation deps.appcompat
-  implementation deps.recyclerview.core
+  implementation deps.androidx.paging
+  implementation deps.androidx.annotations
+  implementation deps.androidx.appcompat
+  implementation deps.androidx.recyclerview
   implementation deps.dagger.runtime
   kapt deps.dagger.compiler
   implementation deps.daggerAndroid.runtime
   kapt deps.daggerAndroid.compiler
+
+  internalImplementation deps.diskcrashreporter
+  internalImplementation deps.leakcanary
+
   testImplementation deps.junit
   testImplementation deps.truth
 }

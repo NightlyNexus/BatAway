@@ -1,54 +1,104 @@
 buildscript {
   ext.versions = [
-      'androidAnnotations': '1.2.0',
-      'androidGradlePlugin': '7.3.0',
-      'appcompat': '1.3.1',
-      'compileSdk': 33,
-      'coroutines': '1.6.4',
-      'dagger': '2.44',
-      'junit': '4.13.2',
-      'kotlin': '1.7.10',
-      'leakcanary': '2.9.1',
-      'okio': '3.2.0',
-      'paging': '2.1.2',
-      'recyclerview': '1.2.1',
-      'recyclerviewSelection': '1.1.0',
-      'sqldelight': '1.5.3',
-      'truth': '1.1.3'
+      androidGradlePlugin: '8.5.0',
+      androidx: [
+          activity: '1.9.0',
+          annotations: '1.8.0',
+          appcompat: '1.7.0',
+          collection: '1.4.0',
+          coordinatorlayout: '1.2.0',
+          core: '1.13.1',
+          drawerlayout: '1.2.0',
+          fragment: '1.8.1',
+          lifecycle: '2.8.3',
+          paging: '2.1.2',
+          preference: '1.2.1',
+          recyclerview: '1.3.2',
+          recyclerviewSelection: '1.1.0',
+          savedstate: '1.2.1',
+          splashscreen : '1.0.1'
+      ],
+      billing: '7.0.0',
+      compileSdk: 34,
+      coroutines: '1.8.1',
+      dagger: '2.51.1',
+      demomode: '0.6.0',
+      diskcrashreporter: '0.2.2',
+      junit: '4.13.2',
+      kotlin: '2.0.0',
+      leakcanary: '2.14',
+      material: '1.12.0',
+      moshi: '1.15.1',
+      okhttp: '4.12.0',
+      okio: '3.9.0',
+      retrofit: '2.11.0',
+      retrofitLogging: '0.12.0',
+      sqldelight: '1.5.5',
+      truth: '1.4.3'
   ]
 
   ext.deps = [
-      'androidAnnotations': "androidx.annotation:annotation:$versions.androidAnnotations",
-      'androidGradlePlugin': "com.android.tools.build:gradle:$versions.androidGradlePlugin",
-      'appcompat': "androidx.appcompat:appcompat:$versions.appcompat",
-      'dagger': [
-          'compiler': "com.google.dagger:dagger-compiler:$versions.dagger",
-          'runtime': "com.google.dagger:dagger:$versions.dagger"
+      androidx: [
+          activity: "androidx.activity:activity-ktx:$versions.androidx.activity",
+          annotations: "androidx.annotation:annotation:$versions.androidx.annotations",
+          appcompat: "androidx.appcompat:appcompat:$versions.androidx.appcompat",
+          collection: "androidx.collection:collection-ktx:$versions.androidx.collection",
+          coordinatorlayout: "androidx.coordinatorlayout:coordinatorlayout:$versions.androidx.coordinatorlayout",
+          core: "androidx.core:core-ktx:$versions.androidx.core",
+          drawerlayout: "androidx.drawerlayout:drawerlayout:$versions.androidx.drawerlayout",
+          fragment: "androidx.fragment:fragment:$versions.androidx.fragment",
+          lifecycleLivedataCore: "androidx.lifecycle:lifecycle-livedata-core-ktx:$versions.androidx.lifecycle",
+          lifecycleRuntime: "androidx.lifecycle:lifecycle-runtime-ktx:$versions.androidx.lifecycle",
+          lifecycleViewmodel: "androidx.lifecycle:lifecycle-viewmodel:$versions.androidx.lifecycle",
+          paging: "androidx.paging:paging-runtime:$versions.androidx.paging",
+          preference: "androidx.preference:preference-ktx:$versions.androidx.preference",
+          recyclerview: "androidx.recyclerview:recyclerview:$versions.androidx.recyclerview",
+          recyclerviewSelection: "androidx.recyclerview:recyclerview-selection:$versions.androidx.recyclerviewSelection",
+          savedstate: "androidx.savedstate:savedstate-ktx:$versions.androidx.savedstate"
       ],
-      'daggerAndroid': [
-          'compiler': "com.google.dagger:dagger-android-processor:$versions.dagger",
-          'runtime': "com.google.dagger:dagger-android:$versions.dagger"
+      androidGradlePlugin: "com.android.tools.build:gradle:$versions.androidGradlePlugin",
+      billing: "com.android.billingclient:billing-ktx:$versions.billing",
+      dagger: [
+          compiler: "com.google.dagger:dagger-compiler:$versions.dagger",
+          runtime: "com.google.dagger:dagger:$versions.dagger"
       ],
-      'junit': "junit:junit:$versions.junit",
-      'kotlin': [
-          'coroutines': "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
-          'coroutinesAndroid': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
-          'gradlePlugin': "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
-          'stdlibJdk8': "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+      daggerAndroid: [
+          compiler: "com.google.dagger:dagger-android-processor:$versions.dagger",
+          runtime: "com.google.dagger:dagger-android:$versions.dagger"
       ],
-      'leakcanary': "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary",
-      'okio': "com.squareup.okio:okio:$versions.okio",
-      'paging': "androidx.paging:paging-runtime:$versions.paging",
-      'recyclerview': [
-          'core': "androidx.recyclerview:recyclerview:$versions.recyclerview",
-          'selection': "androidx.recyclerview-selection:$versions.recyclerviewSelection"
+      demomode: "com.nightlynexus.demomode:demomode:$versions.demomode",
+      diskcrashreporter: "com.nightlynexus.diskcrashreporter:diskcrashreporter:$versions.diskcrashreporter",
+      junit: "junit:junit:$versions.junit",
+      kotlin: [
+          coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+          coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
+          gradlePlugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+          stdlibJdk8: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
+          test: "org.jetbrains.kotlin:kotlin-test:$versions.kotlin"
       ],
-      'sqldelight': [
-          'androidDriver': "com.squareup.sqldelight:android-driver:$versions.sqldelight",
+      leakcanary: "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary",
+      material: "com.google.android.material:material:$versions.material",
+      moshi: [
+          core: "com.squareup.moshi:moshi:$versions.moshi",
+          kotlinCodegen: "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+      ],
+      okhttp: [
+          core: "com.squareup.okhttp3:okhttp:$versions.okhttp",
+          mockwebserver: "com.squareup.okhttp3:mockwebserver:$versions.okhttp"
+      ],
+      okio: "com.squareup.okio:okio:$versions.okio",
+      retrofit: [
+          converterMoshi: "com.squareup.retrofit2:converter-moshi:$versions.retrofit",
+          core: "com.squareup.retrofit2:retrofit:$versions.retrofit",
+          logging: "com.nightlynexus.logging-retrofit:logging:$versions.retrofitLogging"
+      ],
+      sqldelight: [
+          androidDriver: "com.squareup.sqldelight:android-driver:$versions.sqldelight",
           'androidPagingExtensions': "com.squareup.sqldelight:android-paging-extensions:$versions.sqldelight",
-          'gradlePlugin': "com.squareup.sqldelight:gradle-plugin:$versions.sqldelight"
+          gradlePlugin: "com.squareup.sqldelight:gradle-plugin:$versions.sqldelight",
+          sqliteDriver: "com.squareup.sqldelight:sqlite-driver:$versions.sqldelight"
       ],
-      'truth': "com.google.truth:truth:$versions.truth"
+      truth: "com.google.truth:truth:$versions.truth"
   ]
 
   dependencies {
@@ -60,7 +110,7 @@ buildscript {
   repositories {
     google()
     mavenCentral()
-    maven { url 'https://plugins.gradle.org/m2/' }
+    gradlePluginPortal()
   }
 }
 
@@ -76,7 +126,8 @@ allprojects {
         def requested = details.requested
         if (requested.version.endsWith('+')) {
           throw new GradleException(
-              "Wildcard dependency forbidden: ${requested.group}:${requested.name}:${requested.version}")
+              "Wildcard dependency forbidden: ${requested.group}:${requested.name}:${requested.version}"
+          )
         }
       }
     }

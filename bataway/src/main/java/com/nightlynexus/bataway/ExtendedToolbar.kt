@@ -7,7 +7,7 @@ import android.view.View.MeasureSpec.EXACTLY
 import android.view.WindowInsets
 import androidx.appcompat.widget.Toolbar
 
-private class ExtendedToolbar(
+internal class ExtendedToolbar(
   context: Context,
   attributes: AttributeSet
 ) : Toolbar(context, attributes) {

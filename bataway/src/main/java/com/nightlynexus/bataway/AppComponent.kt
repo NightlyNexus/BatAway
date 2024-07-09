@@ -9,8 +9,7 @@ import dagger.android.AndroidInjectionModule
 @Component(
   modules = [
     AndroidInjectionModule::class,
-    AppModule::class,
-    CrashReporterModule::class
+    AppModule::class
   ]
 )
 internal interface AppComponent {
