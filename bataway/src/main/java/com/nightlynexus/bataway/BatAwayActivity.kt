@@ -116,7 +116,7 @@ class BatAwayActivity : AppCompatActivity() {
 
   private fun launchNotificationPermissionSettings() {
     val intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
-    val hasSettingsActivity = packageManager.queryIntentActivities(intent, 0).isNotEmpty()
+    val hasSettingsActivity = intent.resolveActivity(packageManager) != null
     Toast.makeText(this, R.string.toast_enable_in_settings, Toast.LENGTH_LONG).show()
     if (hasSettingsActivity) {
       startActivityForResult(intent, 1)
