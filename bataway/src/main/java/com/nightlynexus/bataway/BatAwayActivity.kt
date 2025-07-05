@@ -8,12 +8,15 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.squareup.sqldelight.Query
 import dagger.android.AndroidInjection
 import kotlinx.coroutines.CoroutineScope
@@ -42,11 +45,13 @@ class BatAwayActivity : AppCompatActivity() {
     scope = MainScope()
     val inflater = LayoutInflater.from(withAppComponent(appComponent))
     inflater.inflate(R.layout.activity, findViewById(android.R.id.content), true)
-    toolbar = findViewById(R.id.toolbar)
-    switch = findViewById(R.id.enable_switch)
-    switchText = findViewById(R.id.enable_switch_text)
-    adsBlocked = findViewById(R.id.ads_blocked)
-    val listShadow = findViewById<View>(R.id.list_shadow)
+    val root = findViewById<ViewGroup>(R.id.root)
+    toolbar = root.findViewById(R.id.toolbar)
+    switch = root.findViewById(R.id.enable_switch)
+    switchText = root.findViewById(R.id.enable_switch_text)
+    adsBlocked = root.findViewById(R.id.ads_blocked)
+    val listShadow = root.findViewById<View>(R.id.list_shadow)
+    val list = root.findViewById<View>(R.id.list)
     if (hasNotificationPermission && enabledPreference.enabled) {
       switch.isChecked = true
       switchText.setText(R.string.switch_enabled)
@@ -101,6 +106,45 @@ class BatAwayActivity : AppCompatActivity() {
     toolbar.setOnMenuItemClickListener {
       showContributeDialog()
       true
+    }
+    ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
+      val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+      v.setPadding(
+        systemBars.left,
+        0,
+        systemBars.right,
+        0
+      )
+      insets
+    }
+    // Don't handle the Toolbar or the RecyclerView here.
+    for (i in 1 until root.childCount - 1) {
+      val child = root.getChildAt(i)
+      ViewCompat.setOnApplyWindowInsetsListener(child) { v, insets ->
+        val cutout = insets.getInsets(WindowInsetsCompat.Type.displayCutout())
+        v.setPadding(
+          cutout.left,
+          0,
+          cutout.right,
+          0
+        )
+        insets
+      }
+    }
+    ViewCompat.setOnApplyWindowInsetsListener(list) { v, insets ->
+      val systemBarsAndCutout = insets.getInsets(
+        WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+      )
+      val cutout = insets.getInsets(
+        WindowInsetsCompat.Type.displayCutout()
+      )
+      v.setPadding(
+        cutout.left,
+        0,
+        cutout.right,
+        systemBarsAndCutout.bottom
+      )
+      insets
     }
   }
 

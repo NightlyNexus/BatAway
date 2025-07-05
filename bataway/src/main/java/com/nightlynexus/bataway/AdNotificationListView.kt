@@ -92,7 +92,7 @@ internal class AdNotificationListView(
     )
       .setFetchExecutor(FetchExecutor())
       .build()
-    observer = Observer<PagedList<AdNotificationDisplay>> {
+    observer = Observer {
       adNotificationAdapter.submitList(it)
     }
   }

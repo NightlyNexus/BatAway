@@ -6,23 +6,35 @@ import android.util.AttributeSet
 import android.view.View.MeasureSpec.EXACTLY
 import android.view.WindowInsets
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
-internal class ExtendedToolbar(
+private class ExtendedToolbar(
   context: Context,
   attributes: AttributeSet
 ) : Toolbar(context, attributes) {
   private var extraHeight = 0
   private var initialHeight = 0
-  private var initialPadding = 0
   private var initialMeasure = true
 
-  override fun onApplyWindowInsets(insets: WindowInsets): WindowInsets {
-    extraHeight = if (SDK_INT >= 30) {
-      insets.getInsets(WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout()).top
-    } else {
-      @Suppress("Deprecation") insets.systemWindowInsetTop
+  init {
+    ViewCompat.setOnApplyWindowInsetsListener(this) { v, insets ->
+      val systemBarsAndCutout = insets.getInsets(
+        WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
+      )
+      val cutout = insets.getInsets(
+        WindowInsetsCompat.Type.displayCutout()
+      )
+      extraHeight = systemBarsAndCutout.top
+      println("initialPadding: ${paddingTop} ${paddingLeft} ${paddingBottom} ${paddingRight}")
+      v.setPadding(
+        cutout.left,
+        systemBarsAndCutout.top,
+        cutout.right,
+        0
+      )
+      insets
     }
-    return super.onApplyWindowInsets(insets)
   }
 
   override fun onMeasure(
@@ -32,13 +44,11 @@ internal class ExtendedToolbar(
     if (initialMeasure) {
       super.onMeasure(widthMeasureSpec, heightMeasureSpec)
       initialHeight = measuredHeight
-      initialPadding = paddingTop
       initialMeasure = false
     } else {
       super.onMeasure(
         widthMeasureSpec, MeasureSpec.makeMeasureSpec(initialHeight + extraHeight, EXACTLY)
       )
-      setPadding(paddingLeft, initialPadding + extraHeight, paddingRight, paddingBottom)
     }
   }
 
