@@ -6,6 +6,9 @@ import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 
+/**
+ * DateFormatter formats dates and times differently depending on how old they are.
+ */
 internal class DateFormatter(
   timeZone: TimeZone,
   locale: Locale,
@@ -45,15 +48,29 @@ internal class DateFormatter(
   private val pastYearFormat12Hour = SimpleDateFormat("MMM d h:mm a", Locale.US)
   private val olderThanAYearFormat12Hour = SimpleDateFormat("MMM d, yyyy h:mm a", Locale.US)
 
+  init {
+    todayFormat.timeZone = timeZone
+    pastYearFormat.timeZone = timeZone
+    olderThanAYearFormat.timeZone = timeZone
+    todayFormat12Hour.timeZone = timeZone
+    pastYearFormat12Hour.timeZone = timeZone
+    olderThanAYearFormat12Hour.timeZone = timeZone
+  }
+
+  /**
+   * Format the date.
+   */
   fun format(date: Date): String {
     val time = date.time
     return when {
       time >= today -> {
         if (use24HourFormat) todayFormat else todayFormat12Hour
       }
+
       time >= pastYear -> {
         if (use24HourFormat) pastYearFormat else pastYearFormat12Hour
       }
+
       else -> {
         if (use24HourFormat) olderThanAYearFormat else olderThanAYearFormat12Hour
       }
