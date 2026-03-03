@@ -2,6 +2,15 @@ package com.nightlynexus.bataway
 
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Calendar.DAY_OF_MONTH
+import java.util.Calendar.DECEMBER
+import java.util.Calendar.HOUR_OF_DAY
+import java.util.Calendar.JANUARY
+import java.util.Calendar.MILLISECOND
+import java.util.Calendar.MINUTE
+import java.util.Calendar.MONTH
+import java.util.Calendar.SECOND
+import java.util.Calendar.YEAR
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
@@ -18,27 +27,27 @@ internal class DateFormatter(
   private val today = Calendar.getInstance(timeZone, locale)
     .apply {
       if (now != null) time = now
-      set(Calendar.HOUR_OF_DAY, 0)
-      set(Calendar.MINUTE, 0)
-      set(Calendar.SECOND, 0)
-      set(Calendar.MILLISECOND, 0)
+      set(HOUR_OF_DAY, 0)
+      set(MINUTE, 0)
+      set(SECOND, 0)
+      set(MILLISECOND, 0)
     }
     .timeInMillis
   private val pastYear = Calendar.getInstance(timeZone, locale)
     .apply {
       if (now != null) time = now
-      val month = get(Calendar.MONTH)
-      if (month == Calendar.DECEMBER) {
-        set(Calendar.MONTH, Calendar.JANUARY)
+      val month = get(MONTH)
+      if (month == DECEMBER) {
+        set(MONTH, JANUARY)
       } else {
-        set(Calendar.YEAR, get(Calendar.YEAR) - 1)
-        set(Calendar.MONTH, month + 1)
+        set(YEAR, get(YEAR) - 1)
+        set(MONTH, month + 1)
       }
-      set(Calendar.DAY_OF_MONTH, 1)
-      set(Calendar.HOUR_OF_DAY, 0)
-      set(Calendar.MINUTE, 0)
-      set(Calendar.SECOND, 0)
-      set(Calendar.MILLISECOND, 0)
+      set(DAY_OF_MONTH, 1)
+      set(HOUR_OF_DAY, 0)
+      set(MINUTE, 0)
+      set(SECOND, 0)
+      set(MILLISECOND, 0)
     }
     .timeInMillis
   private val todayFormat = SimpleDateFormat("HH:mm", Locale.US)
