@@ -26,12 +26,5 @@
         <action android:name="android.service.notification.NotificationListenerService" />
       </intent-filter>
     </service>
-
   </application>
-
-  <queries>
-    <intent>
-      <action android:name="android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS" />
-    </intent>
-  </queries>
 </manifest>

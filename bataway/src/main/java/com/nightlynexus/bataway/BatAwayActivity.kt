@@ -1,6 +1,7 @@
 package com.nightlynexus.bataway
 
 import android.app.Dialog
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.net.Uri
@@ -160,10 +161,11 @@ class BatAwayActivity : AppCompatActivity() {
 
   private fun launchNotificationPermissionSettings() {
     val intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
-    val hasSettingsActivity = intent.resolveActivity(packageManager) != null
     Toast.makeText(this, R.string.toast_enable_in_settings, Toast.LENGTH_LONG).show()
-    if (hasSettingsActivity) {
+    try {
       startActivityForResult(intent, 1)
+    } catch (_: ActivityNotFoundException) {
+      // Nothing to do.
     }
   }
 
